@@ -1,0 +1,19 @@
+<#@ include file="T4ResourcesToJavaScriptFiles.tt" #>
+
+<#
+
+	var resourceExtensions = new List<string>() { ".es-ES", ".en-US", ".fr-FR" };
+	var dir = System.IO.Path.GetDirectoryName(Host.TemplateFile);
+	var outputPath = dir + "\\..\\Scripts\\constants\\literals\\";
+
+	var resourcePath = dir + "\\..\\SomeProjectPath\\Resources\\ResourceFileName{0}.resx";
+	var nameSpacePath = "One.NameSpace.Path";
+
+	CreateJavaScriptFilesFromResources(new JavaScriptFromResourceSettings(){
+		NameSpacePath =  nameSpacePath,
+		ResourcePath =  resourcePath,
+		OutputPath =  outputPath,
+		ResourceExtensions =  resourceExtensions,
+	});
+
+#>
